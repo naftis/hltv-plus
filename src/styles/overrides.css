@@ -1,0 +1,37 @@
+.bgPadding,
+.widthControl {
+  max-width: none;
+}
+.navbar {
+  position: absolute;
+}
+.navbar .navcon {
+  height: 60px;
+}
+.navcon a {
+  border-right: 0 !important;
+  border-left: 0 !important;
+}
+.hltv-logo-container {
+  position: absolute;
+  top: 0;
+  z-index: 50000;
+}
+
+/* Hide comments from articles */
+.forum {
+  display: none;
+}
+
+.leftCol {
+  min-width: 15%;
+  max-width: 15%;
+}
+
+.leftCol .team {
+  width: 50% !important;
+}
+
+body {
+  zoom: 1.15 !important;
+}

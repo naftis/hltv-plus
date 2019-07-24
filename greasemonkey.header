@@ -1,0 +1,7 @@
+// ==UserScript==
+// @name hltv-plus
+// @namespace https://github.com/naftis
+// @match https://*.hltv.org/*
+// @grant none
+// ==/UserScript==
+

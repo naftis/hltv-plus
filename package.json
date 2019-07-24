@@ -1,0 +1,16 @@
+{
+  "name": "hltv-plus",
+  "license": "MIT",
+  "scripts": {
+    "build": "parcel build src/index.ts --no-minify -o dist/hltvplus.user.js",
+    "dev": "parcel watch src/index.ts -o dist/hltvplus.user.js"
+  },
+  "devDependencies": {
+    "@types/node": "^12.6.8",
+    "@types/parcel-env": "^0.0.0",
+    "parcel": "^1.12.3",
+    "parcel-plugin-greasemonkey": "^1.0.3",
+    "parcel-plugin-text": "^0.9.5",
+    "typescript": "^3.5.3"
+  }
+}
