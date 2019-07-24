@@ -5,6 +5,10 @@
 .navbar {
   position: absolute;
 }
+.navcon,
+.navdown {
+  position: static !important;
+}
 .navbar .navcon {
   height: 60px;
 }
@@ -18,12 +22,13 @@
   z-index: 50000;
 }
 
-/* Hide comments from articles */
 .forum {
+  /* Hide comments from articles */
   display: none;
 }
 
-.leftCol {
+.leftCol,
+.rightCol {
   min-width: 15%;
   max-width: 15%;
 }
@@ -34,4 +39,19 @@
 
 body {
   zoom: 1.15 !important;
+}
+
+.navbar .navdown {
+  line-height: 62px;
+}
+
+.navdown i {
+  font-size: 18px;
+  position: absolute;
+  right: 2.5rem;
+  top: 23px;
+}
+
+a[href='/forums'] {
+  display: none;
 }

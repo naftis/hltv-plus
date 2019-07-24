@@ -124,14 +124,14 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"wpPI":[function(require,module,exports) {
+})({"YhTH":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-function findParent(parentSelector, childrenSelector) {
+function findParentByChildren(parentSelector, childrenSelector) {
   var matches = document.querySelectorAll(childrenSelector);
   var _iteratorNormalCompletion = true;
   var _didIteratorError = false;
@@ -164,28 +164,8 @@ function findParent(parentSelector, childrenSelector) {
   return null;
 }
 
-exports.findParent = findParent;
-},{}],"Whw5":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var find_parent_1 = require("../utils/find-parent");
-
-function removeForums() {
-  var forumsPanel = find_parent_1.findParent('.right2Col', 'a[href="/forums"]');
-
-  if (forumsPanel) {
-    forumsPanel.remove();
-  } else {
-    throw new Error('Could not remove forums from sidepanel');
-  }
-}
-
-exports.removeForums = removeForums;
-},{"../utils/find-parent":"wpPI"}],"f88W":[function(require,module,exports) {
+exports.findParentByChildren = findParentByChildren;
+},{}],"f88W":[function(require,module,exports) {
 
 },{}],"7QCb":[function(require,module,exports) {
 "use strict";
@@ -194,18 +174,41 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var remove_forums_1 = require("./modifications/remove-forums");
+var find_parent_by_children_1 = require("./utils/find-parent-by-children");
 
 var fs_1 = require("fs");
 
 function addStyles() {
-  var styles = ".bgPadding,\r\n.widthControl {\r\n  max-width: none;\r\n}\r\n.navbar {\r\n  position: absolute;\r\n}\r\n.navbar .navcon {\r\n  height: 60px;\r\n}\r\n.navcon a {\r\n  border-right: 0 !important;\r\n  border-left: 0 !important;\r\n}\r\n.hltv-logo-container {\r\n  position: absolute;\r\n  top: 0;\r\n  z-index: 50000;\r\n}\r\n\r\n/* Hide comments from articles */\r\n.forum {\r\n  display: none;\r\n}\r\n\r\n.leftCol {\r\n  min-width: 15%;\r\n  max-width: 15%;\r\n}\r\n\r\n.leftCol .team {\r\n  width: 50% !important;\r\n}\r\n\r\nbody {\r\n  zoom: 1.15 !important;\r\n}\r\n";
+  var styles = ".bgPadding,\r\n.widthControl {\r\n  max-width: none;\r\n}\r\n.navbar {\r\n  position: absolute;\r\n}\r\n.navcon,\r\n.navdown {\r\n  position: static !important;\r\n}\r\n.navbar .navcon {\r\n  height: 60px;\r\n}\r\n.navcon a {\r\n  border-right: 0 !important;\r\n  border-left: 0 !important;\r\n}\r\n.hltv-logo-container {\r\n  position: absolute;\r\n  top: 0;\r\n  z-index: 50000;\r\n}\r\n\r\n.forum {\r\n  /* Hide comments from articles */\r\n  display: none;\r\n}\r\n\r\n.leftCol,\r\n.rightCol {\r\n  min-width: 15%;\r\n  max-width: 15%;\r\n}\r\n\r\n.leftCol .team {\r\n  width: 50% !important;\r\n}\r\n\r\nbody {\r\n  zoom: 1.15 !important;\r\n}\r\n\r\n.navbar .navdown {\r\n  line-height: 62px;\r\n}\r\n\r\n.navdown i {\r\n  font-size: 18px;\r\n  position: absolute;\r\n  right: 2.5rem;\r\n  top: 23px;\r\n}\r\n\r\na[href='/forums'] {\r\n  display: none;\r\n}\r\n";
   var styleNode = document.createElement('style');
   document.head.appendChild(styleNode);
   styleNode.innerHTML = styles;
 }
 
-remove_forums_1.removeForums();
 addStyles();
-},{"./modifications/remove-forums":"Whw5","fs":"f88W"}]},{},["7QCb"], null)
+
+function removeForums() {
+  var forumsPanel = find_parent_by_children_1.findParentByChildren('.right2Col', 'a[href="/forums"]');
+
+  if (forumsPanel) {
+    forumsPanel.remove();
+  } else {
+    console.error('Could not remove forums from sidepanel');
+  }
+}
+
+exports.removeForums = removeForums;
+removeForums();
+
+function changeCaretToCog() {
+  var caretElement = document.querySelector('.navdown > .fa-caret-down');
+
+  if (caretElement) {
+    caretElement.classList.remove('fa-caret-down');
+    caretElement.classList.add('fa-cog');
+  }
+}
+
+changeCaretToCog();
+},{"./utils/find-parent-by-children":"YhTH","fs":"f88W"}]},{},["7QCb"], null)
 //# sourceMappingURL=/hltvplus.user.js.map
